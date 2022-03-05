@@ -30,6 +30,10 @@ body {
     position: relative;
 }
 
+textarea {
+    wrap: on;
+}
+
 .fTextArea {
     resize: none;
     box-sizing: border-box;
@@ -39,7 +43,7 @@ body {
     text-transform: none;
     font-size: none;
     font-family: none;
-    overflow: hidden;
+    overflow: auto;
     height: 450px;
 }
 
@@ -90,7 +94,7 @@ label {
     margin-right: 10px;
     border-radius: 10px;
     border: none;
-    /* box-sizing: border-box; ------------------ not working*/
+    box-sizing: border-box;
     width: 120px;
 }
 
@@ -111,8 +115,28 @@ label {
     padding: 20px;
 }
 
+::-webkit-scrollbar {
+    width: 20px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #abb3ce;
+    border-radius: 20px;
+    border: 6px solid transparent;
+    background-clip: content-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: #a8bbbf;
+}
+
 /* bootstrap class */
 
 .row {
     display: block;
+    overflow-x: auto;
 }

@@ -26,10 +26,10 @@
 <body>
     <div class="container-fluid">
         <div class="row">
-            <div class="fFrame">
-                <div class="fHeader">
+            <div class="fFrame ">
+                <div class="fHeader fCenter">
                     <!-- button to widen the text field -->
-                    <div onclick="widenOn()" class="fFullScreen fCenter ">
+                    <div onclick="widenOn()" class="fFullScreen fCenter">
                         <!--frame for circle  -->
                         <div id="fSwitch-btn" class="fSwitch-btn">
                             <!-- circle in button -->
@@ -38,120 +38,130 @@
                         <label>Widen</label>
 
                     </div>
+                    <div class="row">
+                        <!-- general text options ::: buttons and text edit options -->
+                        <div class="fTextOptions">
+                            <!-- buttons -->
+                            <div class="btn-group fCenter">
+                                <!-- save button but demo -->
+                                <button ondragstart="drag(event)" draggable="true" id="liDownload" onclick="save()"
+                                    class="fBtn btn btn-default btn-success">Save</button>
+                                <!-- delete button -->
+                                <button ondragstart="drag(event)" draggable="true" id="fDelete" onclick="deleteText()"
+                                    class="fBtn btn btn-default btn-danger">Delete</button>
+                                <!-- reset button -->
+                                <button ondragstart="drag(event)" draggable="true" id="fReset" onclick="reset()"
+                                    class="fBtn btn btn-default btn-warning">Reset</button>
+                                <!-- button to split text area  -->
+                                <button class="fBtn btn btn-default btn-primary" onclick="split()">Split</button>
+                            </div>
 
-                    <div class="fTextOptions">
 
-                        <div class="btn-group fCenter">
-                            <!-- save button but demo -->
-                            <button ondragstart="drag(event)" draggable="true" id="fSave" onclick="save()"
-                                class="fBtn btn btn-default btn-success">Save</button>
-                            <!-- delete button -->
-                            <button ondragstart="drag(event)" draggable="true" id="fDelete" onclick="deleteText()"
-                                class="fBtn btn btn-default btn-danger">Delete</button>
-                            <!-- reset button -->
-                            <button ondragstart="drag(event)" draggable="true" id="fReset" onclick="reset()"
-                                class="fBtn btn btn-default btn-warning">Reset</button>
-                            <!-- button to split text area  -->
-                            <button class="fBtn btn btn-default btn-primary" onclick="split()">Split</button>
+                            <!-- text alignment options -->
+                            <div class="fTextOption">
+                                <select class="fTextOption" name="" id="fSelect" onchange="setTextAlign(this)">
+                                    <option value="none">Text Alignment</option>
+                                    <option value="justify">Justify</option>
+                                    <option value="center">Center</option>
+                                    <option value="start">Start</option>
+                                    <option value="left">Left</option>
+                                    <option value="right">Right</option>
+                                    <option value="end">End</option>
+                                </select>
+                            </div>
+                            <!-- text case options -->
+                            <div class="fTextOption">
+                                <select class="fTextOption" name="" id="fSelectCase" onchange="setTextCase(this)">
+                                    <option value="none">Text Case</option>
+                                    <option value="uppercase">Uppercase</option>
+                                    <option value="lowercase">LowerCase</option>
+                                    <option value="Capitalize">Capitalize</option>
+
+                                </select>
+                            </div>
+                            <!-- text font size options -->
+                            <div class="fTextOption">
+                                <select class="fTextOption" name="" id="fSelectSize" onchange="setFontSize(this)">
+                                    <option value="none">Text Font Size</option>
+                                    <option value="large">Large</option>
+                                    <option value="larger">Larger</option>
+                                    <option value="small">Small</option>
+                                    <option value="smaller">Smaller</option>
+                                    <option value="x-large">X Large</option>
+                                    <option value="xx-large">XX Large</option>
+                                    <option value="x-small">X Small</option>
+                                    <option value="xx-small">XX Small</option>
+                                </select>
+                            </div>
+
+                            <!-- text color options -->
+                            <div class="fTextOption">
+                                <select class="fTextOption" name="" id="fSelectColor" onchange="setTextColor(this)">
+                                    <option value="none">Text Color</option>
+                                    <option value="green">Green</option>
+                                    <option value="blue">Blue</option>
+                                    <option value="red">Red</option>
+                                    <option value="pink">Pink</option>
+                                    <option value="purple">Purple</option>
+                                    <option value="white">White</option>
+                                    <option value="black">Black</option>
+                                    <option value="grey">Grey</option>
+
+                                </select>
+                            </div>
+
+                            <!-- word spacing -->
+                            <div class="fTextOption">
+                                <input type="number" class="fTextOption" name="" id="fSetWordSpacing" value=""
+                                    onclick="setWordSpacing()" min="0" max="50" placeholder="Word spacing">
+
+                            </div>
+
+                            <!-- font family -->
+                            <div class="fTextOption">
+                                <select class="fTextOption" name="" id="fSelectFamily" onchange="setFontFamily(this)">
+                                    <option value="none">Font Family</option>
+                                    <option value="Arial">Arial</option>
+                                    <option value="Courier New">Courier New</option>
+                                    <option value="Ubuntu">Ubuntu</option>
+
+                                </select>
+                            </div>
+
+                            <!-- background color -->
+                            <div class="fTextOption">
+                                <select class="fTextOption" name="" id="fSelectBgColor" onchange="setBgColor(this)">
+                                    <option value="none">Bg Color</option>
+                                    <option value="green">Green</option>
+                                    <option value="blue">Blue</option>
+                                    <option value="red">Red</option>
+                                    <option value="pink">Pink</option>
+                                    <option value="purple">Purple</option>
+                                    <option value="white">White</option>
+                                    <option value="black">Black</option>
+                                    <option value="grey">Grey</option>
+
+                                </select>
+                            </div>
                         </div>
-
-
-
-                        <div class="fTextOption">
-                            <select class="fTextOption" name="" id="fSelect" onchange="setTextAlign(this)">
-                                <option value="none">Text Alignment</option>
-                                <option value="justify">Justify</option>
-                                <option value="center">Center</option>
-                                <option value="start">Start</option>
-                                <option value="left">Left</option>
-                                <option value="right">Right</option>
-                                <option value="end">End</option>
-                            </select>
-                        </div>
-                        <!-- text case options -->
-                        <div class="fTextOption">
-                            <select class="fTextOption" name="" id="fSelectCase" onchange="setTextCase(this)">
-                                <option value="none">Text Case</option>
-                                <option value="uppercase">Uppercase</option>
-                                <option value="lowercase">LowerCase</option>
-                                <option value="Capitalize">Capitalize</option>
-
-                            </select>
-                        </div>
-                        <!-- text font size options -->
-                        <div class="fTextOption">
-                            <select class="fTextOption" name="" id="fSelectSize" onchange="setFontSize(this)">
-                                <option value="none">Text Font Size</option>
-                                <option value="large">Large</option>
-                                <option value="larger">Larger</option>
-                                <option value="small">Small</option>
-                                <option value="smaller">Smaller</option>
-                                <option value="x-large">X Large</option>
-                                <option value="xx-large">XX Large</option>
-                                <option value="x-small">X Small</option>
-                                <option value="xx-small">XX Small</option>
-                            </select>
-                        </div>
-                        <div class="fTextOption">
-                            <select class="fTextOption" name="" id="fSelectColor" onchange="setTextColor(this)">
-                                <option value="none">Text Color</option>
-                                <option value="green">Green</option>
-                                <option value="blue">Blue</option>
-                                <option value="red">Red</option>
-                                <option value="pink">Pink</option>
-                                <option value="purple">Purple</option>
-                                <option value="white">White</option>
-                                <option value="black">Black</option>
-                                <option value="grey">Grey</option>
-
-                            </select>
-                        </div>
-                        <div class="fTextOption">
-                            <input type="number" class="fTextOption" name="" id="fSetWordSpacing" value=""
-                                onclick="setWordSpacing()" min="0" max="50" placeholder="Word spacing">
-
-                        </div>
-                        <div class="fTextOption">
-                            <select class="fTextOption" name="" id="fSelectFamily" onchange="setFontFamily(this)">
-                                <option value="none">Font Family</option>
-                                <option value="Arial">Arial</option>
-                                <option value="Courier New">Courier New</option>
-                                <option value="Ubuntu">Ubuntu</option>
-
-                            </select>
-                        </div>
-
-                        <div class="fTextOption">
-                            <select class="fTextOption" name="" id="fSelectBgColor" onchange="setBgColor(this)">
-                                <option value="none">Bg Color</option>
-                                <option value="green">Green</option>
-                                <option value="blue">Blue</option>
-                                <option value="red">Red</option>
-                                <option value="pink">Pink</option>
-                                <option value="purple">Purple</option>
-                                <option value="white">White</option>
-                                <option value="black">Black</option>
-                                <option value="grey">Grey</option>
-
-                            </select>
-                        </div>
-                    </div><input placeholder="text">
+                    </div>
 
                 </div>
-                <div class="container" id="toWiden">
-                    <!-- body of the page -->
-                    <div id="fBody" class="fBody fPadRad">
-                        <!-- text field where text is typed -->
-                        <div class="fTextField">
-                            <div onclick="alertDrop()" class="ctnBtn fCenter" id="div2" ondrop="drop(event)"
-                                ondragover="allowDrop(event)"></div>
 
-                            <!-- text itself -->
-                            <textarea name="" class="fTextArea" cols="25"
-                                rows="25">Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis beatae adipisci, illo fugit voluptas maiores esse, fugiat neque quam, nostrum ea temporibus cumque quisquam iure quis quod eos obcaecati ducimus?</textarea>
-                        </div>
+            </div>
+            <div class="container" id="toWiden">
+                <!-- body of the page -->
+                <div id="fBody" class="fBody fPadRad">
+                    <!-- text field where text is typed -->
+                    <div class="fTextField">
+                        <div onclick="alertDrop()" class="ctnBtn fCenter" id="div2" ondrop="drop(event)"
+                            ondragover="allowDrop(event)"></div>
 
+                        <!-- text itself -->
+                        <textarea name="" class="fTextArea" id="fTextArealight" cols="25"
+                            rows="25">Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis beatae adipisci, illo fugit voluptas maiores esse, fugiat neque quam, nostrum ea temporibus cumque quisquam iure quis quod eos obcaecati ducimus?</textarea>
                     </div>
+
                 </div>
             </div>
         </div>

@@ -41,44 +41,45 @@ function widenOn() {
     }
 }
 
-
-
-
-var rowSize = 25;
-document.onkeydown = function (event) {
-    if (event.key == "Enter") {
-        text.rows = rowSize
-        rowSize++
-    }
-}
-
-
-
 function save() {
-    //if file name is not " " then prompt will stop 
-    //otherwise it will stop and accept the name of the file
+    //if file name is empty the prompt will ask the name again
+    //otherwise starts the download process
     var isAccepted = false
     while (!isAccepted) {
 
-        var title = prompt("For demo enter the name of the file ")
-        if (title != '') {
+        var title = prompt("Enter the name of the file ")
+        if (title != '') {  //if the name is given start the download process
             isAccepted = true
+
+            saveTextAsFile(textArea[0].value, title + '.txt')
         }
     }
 }
+
+// accepts text content and name
+function saveTextAsFile(textToWrite, fileNameToSaveAs) {
+    var textFileAsBlob = new Blob([textToWrite], { type: 'text/plain' });
+    //the download process happens with link element
+    var downloadLink = document.createElement("a");
+    downloadLink.download = fileNameToSaveAs;
+    downloadLink.href = window.webkitURL.createObjectURL(textFileAsBlob);
+    downloadLink.click();
+}
+
 //to split text area in index.html
 var isSplit = false
+//a variable to refer text area properties and text
+const textArea = document.getElementsByClassName("fTextArea")
 function deleteText() {
-    var text = document.getElementsByClassName("fTextArea")[0]
+    var text = textArea[0]
     if (isSplit == false) {
         text.value = " "
     }
     else {
         text.value = " "
-        document.getElementsByClassName("fTextArea")[1].value = " "
+        textArea[1].value = " "
     }
 }
-
 
 function reset() {
     window.location.href = ""
@@ -87,52 +88,65 @@ var editedText, hLightedText;
 
 //functions to edit style
 function setTextAlign(id) {
-    var text = document.getElementsByClassName("fTextArea")[0]
+    var text = textArea[0]
     text.style.textAlign = id.value
 
     if (isSplit == true) {
-        document.getElementsByClassName("fTextArea")[1].style.textAlign = id.value
+        textArea[1].style.textAlign = id.value
     }
 }
 function setTextCase(id) {
-    var text = document.getElementsByClassName("fTextArea")[0]
+    var text = textArea[0]
     text.style.textTransform = id.value
 
     if (isSplit == true) {
-        document.getElementsByClassName("fTextArea")[1].style.textTransform = id.value
+        textArea[1].style.textTransform = id.value
     }
 }
 function setFontSize(id) {
-    var text = document.getElementsByClassName("fTextArea")[0]
+    var text = textArea[0]
     text.style.fontSize = id.value
     if (isSplit == true) {
-        document.getElementsByClassName("fTextArea")[1].style.fontSize = id.value
+        textArea[1].style.fontSize = id.value
     }
 }
 function setTextColor(id) {
-    var text = document.getElementsByClassName("fTextArea")[0]
+    var text = textArea[0]
     text.style.color = id.value
     if (isSplit == true) {
-        document.getElementsByClassName("fTextArea")[1].style.color = id.value
+        textArea[1].style.color = id.value
     }
 }
 function setBgColor(id) {
-    var text = document.getElementsByClassName("fTextArea")[0]
+    var text = textArea[0]
     text.style.background = id.value
 
     if (isSplit == true) {
-        document.getElementsByClassName("fTextArea")[1].style.background = id.value
+        textArea[1].style.background = id.value
     }
 }
 function setWordSpacing() {
     document.getElementById("fSetWordSpacing").onkeydown = function (event) {
         if (event.key == "Enter") {
             var value2 = document.getElementById("fSetWordSpacing").value
-            text.style.wordSpacing = value2 + "px"
+            textArea[0].style.wordSpacing = value2 + "px"
         }
     }
 }
 function setFontFamily(id) {
-    var text = document.getElementsByClassName("fTextArea")[0]
+    var text = textArea[0]
     text.style.fontFamily = id.value
+}
+
+function search() {
+    document.getElementById("fSearch").onkeydown = function (event) {
+        if (event.key == "Enter") {
+            var value2 = document.getElementById("fSearch").value
+            console.log("value2")
+            // textArea[0].style.wordSpacing = value2 + "px"
+
+        }
+        console.log("value2")
+
+    }
 }
